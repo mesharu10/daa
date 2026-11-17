@@ -1,0 +1,18 @@
+weight = [10, 20, 30]
+value = [60, 100, 120]
+capacity = 50
+
+ratio = sorted(range(len(weight)),
+               key=lambda i: value[i] / weight[i], reverse=True)
+
+profit = 0
+
+for i in ratio:
+    if capacity >= weight[i]:
+        profit += value[i]
+        capacity -= weight[i]
+    else:
+        profit += value[i] * capacity / weight[i]
+        break
+
+print("Maximum Profit:", profit)
